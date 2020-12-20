@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.972,=C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.841,C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\Project3.dproj=C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\УД\Moderation_department\ModDepartmentDB.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.097,C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\Unit3.dfm=C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\УД\Moderation_department\Unit3.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.114,=C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.097,C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\Unit3.pas=C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\УД\Moderation_department\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.405,=C:\Users\Kajima\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+  </Transactions>
+</BorlandProject>
