@@ -33,7 +33,7 @@ object Form3: TForm3
     Top = 0
     Width = 771
     Height = 543
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 1
     ExplicitWidth = 668
@@ -746,12 +746,186 @@ object Form3: TForm3
         ParentCtl3D = False
         TabOrder = 3
       end
+      object sendButton: TButton
+        Left = 418
+        Top = 412
+        Width = 75
+        Height = 25
+        Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
+        TabOrder = 4
+        OnClick = sendButtonClick
+      end
     end
     object TabSheet2: TTabSheet
       Caption = #1050#1072#1076#1088#1099
       ImageIndex = 1
-      ExplicitWidth = 660
-      ExplicitHeight = 293
+      ExplicitLeft = 8
+      ExplicitTop = 28
+      object Label6: TLabel
+        Left = 304
+        Top = 21
+        Width = 105
+        Height = 13
+        Caption = #1057#1087#1080#1089#1086#1082' '#1089#1086#1090#1088#1091#1076#1085#1080#1082#1086#1074
+      end
+      object Label7: TLabel
+        Left = 32
+        Top = 384
+        Width = 72
+        Height = 13
+        Caption = #1055#1086#1080#1089#1082' ('#1060'.'#1048'.'#1054')'
+      end
+      object DBGrid1: TDBGrid
+        Left = 32
+        Top = 40
+        Width = 705
+        Height = 329
+        DataSource = DataSource2
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'employee_id'
+            ReadOnly = True
+            Width = 70
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'first_name'
+            Width = 80
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'second_name'
+            Width = 80
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'third_name'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'date_of_birth'
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'gender'
+            Width = 80
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'adress'
+            Width = 150
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'employment_date'
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'post'
+            Width = 40
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'post_1'
+            Width = 100
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'supervisor_id'
+            Width = 80
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'email'
+            Width = 170
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'passport_id'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'phone'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'requisites'
+            Width = 150
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'direction'
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'name'
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'id'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'id_1'
+            Visible = False
+          end>
+      end
+      object Edit1: TEdit
+        Left = 36
+        Top = 427
+        Width = 121
+        Height = 21
+        TabOrder = 1
+      end
+      object Button1: TButton
+        Left = 200
+        Top = 456
+        Width = 75
+        Height = 25
+        Caption = 'Button1'
+        TabOrder = 2
+        OnClick = Button1Click
+      end
     end
     object TabSheet3: TTabSheet
       Caption = #1055#1088#1086#1074#1077#1088#1082#1072' '#1082#1072#1095#1077#1089#1090#1074#1072
@@ -765,15 +939,6 @@ object Form3: TForm3
       ExplicitWidth = 660
       ExplicitHeight = 293
     end
-  end
-  object sendButton: TButton
-    Left = 418
-    Top = 412
-    Width = 75
-    Height = 25
-    Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
-    TabOrder = 2
-    OnClick = sendButtonClick
   end
   object ADOConnection1: TADOConnection
     Connected = True
@@ -801,16 +966,28 @@ object Form3: TForm3
     Left = 704
     Top = 72
   end
-  object ADODataSet2: TADODataSet
-    Connection = ADOConnection1
-    Parameters = <>
-    Left = 704
-    Top = 184
-  end
   object ADOQuery1: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
-    Left = 680
-    Top = 248
+    Left = 704
+    Top = 192
+  end
+  object ADODataSet2: TADODataSet
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT * FROM public.employee'#13#10'LEFT JOIN public.post ON public.e' +
+      'mployee.post=public.post.id'#13#10'LEFT JOIN public.direction ON publi' +
+      'c.employee.direction=public.direction.id'#13#10'ORDER BY employee_id A' +
+      'SC '
+    Parameters = <>
+    Left = 632
+    Top = 40
+  end
+  object DataSource2: TDataSource
+    DataSet = ADODataSet2
+    Left = 632
+    Top = 128
   end
 end

@@ -33,15 +33,22 @@ type
     sendButton: TButton;
     Label2: TLabel;
     DBText2: TDBText;
-    ADODataSet2: TADODataSet;
     ADOQuery1: TADOQuery;
     Label5: TLabel;
+    DBGrid1: TDBGrid;
+    ADODataSet2: TADODataSet;
+    DataSource2: TDataSource;
+    Label6: TLabel;
+    Label7: TLabel;
+    Edit1: TEdit;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure startButtonClick(Sender: TObject);
     procedure finishButtonClick(Sender: TObject);
     procedure refreshButtonClick(Sender: TObject);
     procedure sendButtonClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -64,6 +71,14 @@ begin
   solution:=rg1+1;
   queryStr:='UPDATE public.jobs SET date_of_execution= '''+nowtime+''', id_solution='+inttostr(solution)+', id_executor=1 WHERE id='+inttostr(id)+';';
   result:=queryStr;
+end;
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+    if DBGrid1.DataSource.DataSet.Locate(DBGrid1.Columns[1].FieldName, Edit1.Text,[loCaseInsensitive, loPartialKey]) then
+      DBGrid1.DataSource.DataSet.Locate('first_name', Edit1.Text,[loCaseInsensitive, loPartialKey]);
+    if not ADODataSet2.Locate('first_name', Edit1.Text,[loCaseInsensitive, loPartialKey]) then
+      ShowMessage('Запись не найдена');
 end;
 
 procedure TForm3.finishButtonClick(Sender: TObject);
@@ -134,8 +149,6 @@ begin
       finishButtonClick(Form3);
       Label5.Visible:=True;
     end;
-
-
 end;
 
 procedure TForm3.startButtonClick(Sender: TObject);
